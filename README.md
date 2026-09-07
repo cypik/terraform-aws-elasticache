@@ -24,7 +24,7 @@ To use this module, you can include it in your Terraform configuration. Here's a
 ```hcl
 module "memcached" {
   source        = "cypik/elasticache/aws"
-  version       = "1.0.0"
+  version       = "1.0.1"
   name          = "memcached"
   environment   = "test"
   label_order   = ["name", "environment"]
@@ -62,7 +62,7 @@ module "memcached" {
 ```hcl
 module "redis" {
   source        = "cypik/elasticache/aws"
-  version       ="1.0.0"
+  version       ="1.0.1"
   name          = "redis"
   environment   = "test"
   label_order   = ["name", "environment"]
@@ -113,7 +113,7 @@ module "redis" {
 ```hcl
 module "redis-cluster" {
   source        = "cypik/elasticache/aws"
-  version       = "1.0.0"
+  version       = "1.0.1"
   name          = "redis-cluster"
   environment   = "test"
   label_order   = ["environment", "name"]
@@ -159,22 +159,22 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.6 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.32.1 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0, < 4.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.15.8 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.58.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.9, < 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.32.1 |
-| <a name="provider_random"></a> [random](#provider\_random) | >= 3.0, < 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.58.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3.9, < 4.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.1 |
+| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/aws | 1.0.4 |
 
 ## Resources
 
@@ -246,7 +246,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 | <a name="input_name"></a> [name](#input\_name) | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | <a name="input_node_type"></a> [node\_type](#input\_node\_type) | The compute and memory capacity of the nodes in the node group. | `string` | `"cache.t2.small"` | no |
 | <a name="input_notification_topic_arn"></a> [notification\_topic\_arn](#input\_notification\_topic\_arn) | An Amazon Resource Name (ARN) of an SNS topic to send ElastiCache notifications to. | `string` | `""` | no |
-| <a name="input_num_cache_clusters"></a> [num\_cache\_clusters](#input\_num\_cache\_clusters) | (Required for Cluster Mode Disabled) The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications. | `number` | `1` | no |
+| <a name="input_num_cache_clusters"></a> [num\_cache\_clusters](#input\_num\_cache\_clusters) | (Required for Cluster Mode Disabled) The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications. | `number` | `2` | no |
 | <a name="input_num_cache_nodes"></a> [num\_cache\_nodes](#input\_num\_cache\_nodes) | (Required unless replication\_group\_id is provided) The initial number of cache nodes that the cache cluster will have. For Redis, this value must be 1. For Memcache, this value must be between 1 and 20. If this number is reduced on subsequent runs, the highest numbered nodes will be removed. | `number` | `1` | no |
 | <a name="input_parameter_group_name"></a> [parameter\_group\_name](#input\_parameter\_group\_name) | The name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used. | `string` | `"default.redis5.0"` | no |
 | <a name="input_port"></a> [port](#input\_port) | the port number on which each of the cache nodes will accept connections. | `string` | `""` | no |

@@ -145,7 +145,7 @@ variable "availability_zones" {
 
 variable "num_cache_clusters" {
   type        = number
-  default     = 1
+  default     = 2
   description = "(Required for Cluster Mode Disabled) The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications."
 }
 

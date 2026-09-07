@@ -4,7 +4,7 @@ provider "aws" {
 
 module "vpc" {
   source      = "cypik/vpc/aws"
-  version     = "1.0.1"
+  version     = "1.0.5"
   name        = "redis"
   environment = "test"
   label_order = ["environment", "name"]
@@ -13,12 +13,12 @@ module "vpc" {
 
 module "subnets" {
   source             = "cypik/subnet/aws"
-  version            = "1.0.1"
+  version            = "1.0.7"
   name               = "redis"
   environment        = "test"
   label_order        = ["environment", "name"]
   availability_zones = ["eu-west-1a", "eu-west-1b", ]
-  vpc_id             = module.vpc.id
+  vpc_id             = module.vpc.vpc_id
   type               = "public"
   igw_id             = module.vpc.igw_id
   cidr_block         = module.vpc.vpc_cidr_block
@@ -30,7 +30,7 @@ module "redis" {
   name          = "redis"
   environment   = "test"
   label_order   = ["name", "environment"]
-  vpc_id        = module.vpc.id
+  vpc_id        = module.vpc.vpc_id
   allowed_ip    = [module.vpc.vpc_cidr_block]
   allowed_ports = [6379]
 
